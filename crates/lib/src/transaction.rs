@@ -117,23 +117,21 @@ impl<TClient: PrismaClient> TransactionController<TClient> {
     }
 
     pub async fn commit(self, client: TClient) -> super::Result<()> {
-        Ok(match &client.internals().engine {
-            ExecutionEngine::Real { connector, .. } => connector
+        if let ExecutionEngine::Real { connector, .. } = &client.internals().engine {
+            connector
                 .executor
                 .commit_tx(self.tx_id)
                 .await
-                .map_err(|e| QueryError::Execute(e.into()))?,
-            _ => {}
-        })
+                .map_err(|e| QueryError::Execute(e.into()))?
+        };
+        Ok(())
     }
 
     pub async fn rollback(self, client: TClient) -> super::Result<()> {
-        Ok(match &client.internals().engine {
-            ExecutionEngine::Real { connector, .. } => {
-                connector.executor.rollback_tx(self.tx_id).await.ok();
-            }
-            _ => {}
-        })
+        if let ExecutionEngine::Real { connector, .. } = &client.internals().engine {
+            connector.executor.rollback_tx(self.tx_id).await.ok();
+        };
+        Ok(())
     }
 }
 

@@ -33,7 +33,7 @@ pub mod prisma {
 }
 
 pub mod prelude {
-    pub use super::{args::*, prisma::*, *};
+    pub use super::{args::*, prisma::dmmf, prisma::*, *};
     pub use proc_macro2::*;
     pub use quote::*;
     pub use syn::{
@@ -120,11 +120,11 @@ impl Module {
     }
 
     pub fn get_all_paths(&self, parent_path: &Path) -> Vec<PathBuf> {
-        if self.submodules.len() > 0 {
+        if !self.submodules.is_empty() {
             [parent_path.join("mod.rs")]
                 .into_iter()
                 .chain(self.submodules.iter().flat_map(|sm| {
-                    sm.get_all_paths(&parent_path.join(&sm.name.to_case(Case::Snake, true)))
+                    sm.get_all_paths(&parent_path.join(sm.name.to_case(Case::Snake, true)))
                 }))
                 .collect()
         } else {

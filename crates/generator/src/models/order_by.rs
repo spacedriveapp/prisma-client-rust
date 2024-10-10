@@ -177,14 +177,16 @@ pub fn model_data(model: ModelWalker, args: &GenerateArgs) -> ModelModulePart {
             .into_iter()
             .chain(relation_field_stuff)
             .fold(BTreeMap::new(), |mut acc, (name, data)| {
-                let entry = acc.entry(name.to_string()).or_insert_with(|| vec![]);
+                let entry: &mut Vec<_> = acc.entry(name.to_string()).or_default();
                 entry.push(data);
                 acc
             })
             .into_iter()
             .map(|(name, data)| {
-                let Some(typ) = data.iter()
-                	.find_map(|(typ, _)| (typ.to_string() == data[0].0.to_string()).then_some(typ)) else {
+                let Some(typ) = data
+                    .iter()
+                    .find_map(|(typ, _)| (typ.to_string() == data[0].0.to_string()).then_some(typ))
+                else {
                     panic!();
                 };
 

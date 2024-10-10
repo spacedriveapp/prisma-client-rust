@@ -1,6 +1,8 @@
 use std::collections::HashMap;
 
 use crate::PrismaValue;
+use base64::engine::general_purpose::STANDARD as base64;
+use base64::Engine;
 use chrono::SecondsFormat;
 use serde::{Deserialize, Serialize, Serializer};
 use serde_json::{json, Value};
@@ -81,7 +83,7 @@ impl From<RawTypedJson> for RawPrismaValue {
             ("double", Number(n)) => RawPrismaValue::Double(n.as_f64().unwrap()),
             ("string", String(s)) => RawPrismaValue::String(s),
             ("enum", String(s)) => RawPrismaValue::Enum(s),
-            ("bytes", String(b64)) => RawPrismaValue::Bytes(base64::decode(b64).unwrap()),
+            ("bytes", String(b64)) => RawPrismaValue::Bytes(base64.decode(b64).unwrap()),
             ("bool", Bool(b)) => RawPrismaValue::Bool(b),
             ("char", String(s)) => RawPrismaValue::Char(s.chars().next().unwrap()),
             ("decimal", String(n)) => {

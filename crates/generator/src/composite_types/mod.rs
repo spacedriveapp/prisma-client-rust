@@ -100,7 +100,7 @@ impl CompositeTypeModulePart {
             .into_iter()
             .flat_map(|p| p.into_iter())
             .fold(BTreeMap::new(), |mut acc, (k, v)| {
-                let entry = acc.entry(k).or_insert_with(|| vec![]);
+                let entry: &mut Vec<TokenStream> = acc.entry(k).or_default();
                 entry.push(v);
                 acc
             })

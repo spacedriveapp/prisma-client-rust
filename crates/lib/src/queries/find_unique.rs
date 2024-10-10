@@ -113,6 +113,15 @@ where
     pub with_params: Vec<Actions::With>,
 }
 
+impl<Actions> Default for UniqueArgs<Actions>
+where
+    Actions: ModelTypes,
+{
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<Actions> UniqueArgs<Actions>
 where
     Actions: ModelTypes,

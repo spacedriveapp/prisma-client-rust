@@ -86,8 +86,7 @@ impl<'a, Actions: ModelTypes> Query<'a> for Count<'a, Actions> {
                                     .map(WhereInput::serialize)
                                     .map(|s| (s.field, s.value.into()))
                                     .collect(),
-                            ))
-                            .into(),
+                            )),
                         )
                     }),
                     (!self.order_by_params.is_empty()).then(|| {
@@ -98,8 +97,7 @@ impl<'a, Actions: ModelTypes> Query<'a> for Count<'a, Actions> {
                                     .into_iter()
                                     .map(|p| PrismaValue::Object(vec![p.into()]))
                                     .collect(),
-                            )
-                            .into(),
+                            ),
                         )
                     }),
                     (!self.cursor_params.is_empty()).then(|| {

@@ -36,8 +36,7 @@ impl<'a, Actions: ModelTypes> CreateUnchecked<'a, Actions> {
                 PrismaValue::Object(merge_fields(
                     set_params.into_iter().map(Into::into).collect(),
                 )),
-            )]
-            .into_iter(),
+            )],
             nested_selections,
         )
     }

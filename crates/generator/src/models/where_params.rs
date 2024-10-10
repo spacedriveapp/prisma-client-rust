@@ -16,7 +16,7 @@ pub struct Operator {
     pub list: bool,
 }
 
-static OPERATORS: &'static [Operator] = &[
+static OPERATORS: &[Operator] = &[
     Operator {
         name: "Not",
         action: "NOT",
@@ -228,7 +228,7 @@ pub fn model_data(
     let mut entries = vec![];
 
     entries.extend(OPERATORS.iter().map(|op| {
-        let variant_name = pascal_ident(&op.name);
+        let variant_name = pascal_ident(op.name);
         let op_action = &op.action;
 
         let value = match op.list {
@@ -283,7 +283,7 @@ pub fn model_data(
             let variant_data_names = fields.iter().map(|f| snake_ident(f.name())).collect::<Vec<_>>();
 
             let ((field_defs, field_types), (prisma_values, field_names_snake)):
-                ((Vec<_>, Vec<_>), (Vec<_>, Vec<_>)) = fields.into_iter().map(|field| {
+                ((Vec<_>, Vec<_>), (Vec<_>, Vec<_>)) = fields.iter().map(|field| {
                 let field_type = match field.ast_field().arity {
                     FieldArity::List | FieldArity::Required => field.type_tokens(module_path),
                     FieldArity::Optional => field.scalar_field_type().to_tokens(module_path, &FieldArity::Required, field.db)
@@ -360,8 +360,7 @@ pub fn unique_field_combos(model: ModelWalker) -> Vec<Vec<ScalarFieldWalker>> {
         let primary_key_is_also_unique = model.indexes().any(|i| {
             primary_key.contains_exactly_fields(
                 i.fields()
-                    .map(|f| f.as_scalar_field())
-                    .flatten()
+                    .filter_map(|f| f.as_scalar_field())
                     .collect::<Vec<_>>()
                     .into_iter(),
             )

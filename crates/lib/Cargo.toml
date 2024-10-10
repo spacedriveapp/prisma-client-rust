@@ -1,70 +1,60 @@
 [package]
-name = "prisma-client-rust"
-version = "0.6.8"
-authors = ["Brendan Allan <brendonovich@outlook.com>"]
-edition = "2021"
 description = "A prisma client for Rust"
+name        = "prisma-client-rust"
+version     = "0.6.8"
+
+authors      = ["Brendan Allan <brendonovich@outlook.com>"]
+edition      = "2021"
 rust-version = "1.62"
 
 [features]
-default = []
-rspc = ["dep:rspc", "specta"]
-specta = ["dep:specta", "prisma-client-rust-generator-macros/specta"]
+default            = []
+migrations         = ["dep:include_dir", "dep:tempfile", "dep:tracing", "schema-core", "tokio/fs"]
+mocking            = ["tokio"]
+rspc               = ["dep:rspc", "specta"]
+specta             = ["dep:specta", "prisma-client-rust-generator-macros/specta"]
 sqlite-create-many = ["psl/sqlite-create-many"]
-migrations = [
-  "schema-core",
-  "dep:include_dir",
-  "dep:tempfile",
-  "tokio/fs",
-  "dep:tracing",
-]
-mocking = ["tokio"]
-# mutation-callbacks = []
 
-mssql = ["schema-core/mssql", "request-handlers/mssql"]
-mysql = ["schema-core/mysql", "request-handlers/mysql"]
-postgresql = ["schema-core/postgresql", "request-handlers/postgresql"]
-sqlite = ["schema-core/sqlite", "request-handlers/sqlite"]
-
-mongodb = ["schema-core/mongodb", "request-handlers/mongodb"]
+mongodb    = ["request-handlers/mongodb", "schema-core/mongodb"]
+mssql      = ["request-handlers/mssql", "schema-core/mssql"]
+mysql      = ["request-handlers/mysql", "schema-core/mysql"]
+postgresql = ["request-handlers/postgresql", "schema-core/postgresql"]
+sqlite     = ["request-handlers/sqlite", "schema-core/sqlite"]
 
 [dependencies]
-serde.workspace = true
-serde_json.workspace = true
-chrono = { version = "0.4.19", features = ["serde"] }
-thiserror = "1.0.30"
-bigdecimal = { version = "0.4", features = ["serde"] }
-bigdecimal_03 = { package = "bigdecimal", version = "0.3" }
-uuid = { version = "1", features = ["serde"] }
-indexmap = "1.8.2"
-serde-value = "0.7.0"
-base64 = "0.13.0"
-tokio = { version = "1.21.0", optional = true }
-futures = "0.3"
-paste = "1.0.11"
 prisma-client-rust-generator-macros = { path = "../generator-macros" }
 
-prisma-models = { workspace = true }
-user-facing-errors = { workspace = true }
-psl = { workspace = true }
-diagnostics = { workspace = true }
-request-handlers = { workspace = true }
-query-core = { workspace = true }
+prisma-models.workspace      = true
+psl.workspace                = true
+query-core.workspace         = true
+request-handlers.workspace   = true
+serde.workspace              = true
+serde_json.workspace         = true
+thiserror.workspace          = true
+user-facing-errors.workspace = true
+
+base64      = "0.22.1"
+bigdecimal  = { version = "0.4.5", features = ["serde"] }
+chrono      = { version = "0.4.38", features = ["serde"] }
+futures     = "0.3"
+indexmap    = { version = "2.6", features = ["serde"] }
+paste       = "1.0.11"
+serde-value = "0.7.0"
+uuid        = { version = "1", features = ["serde"] }
 
 # features = "migrations"
+include_dir = { version = "0.7.4", optional = true }
 schema-core = { workspace = true, optional = true }
-include_dir = { version = "0.7.2", optional = true }
-tempfile = { version = "3.5.0", optional = true }
-tracing = { version = "0.1.36", optional = true }
-
-# features = "specta"
-specta = { optional = true, workspace = true, features = [
-  "indexmap",
-  "chrono",
-  "uuid",
-  "bigdecimal",
-] }
+tempfile    = { version = "3.13", optional = true }
+tokio       = { version = "1.40", optional = true }
+tracing     = { version = "0.1.40", optional = true }
 
 # features = "rspc"
-rspc = { optional = true, workspace = true }
 dotenvy = "0.15.7"
+rspc    = { optional = true, workspace = true }
+
+# features = "specta"
+[dependencies.specta]
+features  = ["bigdecimal", "chrono", "indexmap", "uuid"]
+optional  = true
+workspace = true

@@ -1,7 +1,12 @@
 {
   "rust-analyzer.files.excludeDirs": ["**/db"],
   "rust-analyzer.checkOnSave.enable": false,
-  "conventionalCommits.scopes": [
-    "codegen"
+  "conventionalCommits.scopes": ["codegen"],
+  "rust-analyzer.cargo.features": [
+    "migrations",
+    "specta",
+    "sqlite",
+    "sqlite-create-many",
+    "rspc"
   ]
 }

@@ -91,9 +91,9 @@ impl ExecutionEngine {
                             .data
                             .into();
 
-                        Ok(serde_value::to_value(data)
+                        serde_value::to_value(data)
                             .map_err(|e| e.to_string())
-                            .map_err(QueryError::Deserialize)?)
+                            .map_err(QueryError::Deserialize)
                     })
                     .collect())
             }

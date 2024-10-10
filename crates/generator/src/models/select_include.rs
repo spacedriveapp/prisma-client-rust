@@ -190,7 +190,7 @@ fn model_module_enum(model: ModelWalker, variant: Variant) -> TokenStream {
 
     let variants = model
         .fields()
-        .filter(|f| !f.ast_field().field_type.as_unsupported().is_some())
+        .filter(|f| f.ast_field().field_type.as_unsupported().is_none())
         .map(|field| {
             let field_name_snake = snake_ident(field.name());
             let field_name_pascal = pascal_ident(field.name());
@@ -200,7 +200,7 @@ fn model_module_enum(model: ModelWalker, variant: Variant) -> TokenStream {
 
     let field_names_pascal = model
         .fields()
-        .filter(|f| !f.ast_field().field_type.as_unsupported().is_some())
+        .filter(|f| f.ast_field().field_type.as_unsupported().is_none())
         .map(|field| pascal_ident(field.name()));
 
     let variant_param = variant.param();

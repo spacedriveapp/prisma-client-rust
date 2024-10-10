@@ -1,32 +1,32 @@
 [package]
-name = "prisma-client-rust-sdk"
+name    = "prisma-client-rust-sdk"
 version = "0.6.8"
-authors = ["Brendan Allan <brendonovich@outlook.com>"]
-edition = "2021"
+
+authors      = ["Brendan Allan <brendonovich@outlook.com>"]
+edition      = "2021"
 rust-version = "1.62"
 
 [features]
-mysql = ["request-handlers/mysql"]
-sqlite = ["request-handlers/sqlite"]
-mssql = ["request-handlers/mssql"]
+mongodb    = ["request-handlers/mongodb"]
+mssql      = ["request-handlers/mssql"]
+mysql      = ["request-handlers/mysql"]
 postgresql = ["request-handlers/postgresql"]
-
-mongodb = ["request-handlers/mongodb"]
+sqlite     = ["request-handlers/sqlite"]
 
 sqlite-create-many = ["psl/sqlite-create-many"]
 
 [dependencies]
-serde_json.workspace = true
-serde.workspace = true
-convert_case = "0.5.0"
-serde_path_to_error = "0.1.7"
-quote = "1.0.18"
-syn = "1.0.91"
-proc-macro2 = "1.0.39"
-thiserror = "1.0.37"
+convert_case.workspace     = true
+dmmf.workspace             = true
+prisma-models.workspace    = true
+proc-macro2.workspace      = true
+psl.workspace              = true
+query-core.workspace       = true
+quote.workspace            = true
+request-handlers.workspace = true
+serde.workspace            = true
+serde_json.workspace       = true
+syn.workspace              = true
+thiserror.workspace        = true
 
-prisma-models = { workspace = true }
-request-handlers = { workspace = true }
-query-core = { workspace = true }
-dmmf = { workspace = true }
-psl = { workspace = true }
+serde_path_to_error = "0.1.7"

@@ -52,7 +52,7 @@ impl<'a, Actions: ModelTypes> CreateMany<'a, Actions> {
                 _skip_duplicates.then(|| {
                     (
                         "skipDuplicates".to_string(),
-                        PrismaValue::Boolean(_skip_duplicates).into(),
+                        PrismaValue::Boolean(_skip_duplicates),
                     )
                 }),
             ]

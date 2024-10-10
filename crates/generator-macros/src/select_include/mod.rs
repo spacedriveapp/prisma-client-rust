@@ -14,9 +14,7 @@ use syn::{
 use definitions::*;
 use selection::*;
 
-pub use prisma_client_rust_generator_shared::{
-    select_include::Variant, Arity, FieldTuple, RelationArity,
-};
+pub use prisma_client_rust_generator_shared::select_include::Variant;
 
 #[derive(Debug)]
 enum SectionOrName {

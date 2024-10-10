@@ -24,16 +24,14 @@ pub fn model_data(model: ModelWalker) -> ModelModulePart {
 
                     let base_data = quote!(#relation_model_name_snake::Data);
 
-                    let typ = match arity {
+                    match arity {
                         FieldArity::List => (quote!(Vec<#base_data>), None),
                         FieldArity::Optional => (
                             quote!(Option<#base_data>),
                             Some(quote!(Option<Box<#base_data>>)),
                         ),
                         FieldArity::Required => (quote!(#base_data), Some(quote!(Box<#base_data>))),
-                    };
-
-                    typ
+                    }
                 }
                 RefinedFieldWalker::Scalar(scalar_field) => {
                     match scalar_field.scalar_field_type() {
@@ -44,7 +42,7 @@ pub fn model_data(model: ModelWalker) -> ModelModulePart {
 
                             let base_data = quote!(#comp_type::Data);
 
-                            let typ = match arity {
+                            match arity {
                                 FieldArity::List => (quote!(Vec<#base_data>), None),
                                 FieldArity::Optional => (
                                     quote!(Option<#base_data>),
@@ -53,9 +51,7 @@ pub fn model_data(model: ModelWalker) -> ModelModulePart {
                                 FieldArity::Required => {
                                     (quote!(#base_data), Some(quote!(Box<#base_data>)))
                                 }
-                            };
-
-                            typ
+                            }
                         }
                         _ => (field.type_tokens(&quote!(super::super::))?, None),
                     }
@@ -129,7 +125,7 @@ pub fn r#struct(model: ModelWalker) -> TokenStream {
     let relation_accessors = model.fields().filter_map(|field| match field.refine() {
         RefinedFieldWalker::Relation(relation_field) => {
             let field_name_snake = snake_ident(field.name());
-            let relation_model_name_snake = snake_ident(&relation_field.related_model().name());
+            let relation_model_name_snake = snake_ident(relation_field.related_model().name());
 
             let access_error =
                 quote!(#pcr::RelationNotFetchedError::new(stringify!(#field_name_snake)));

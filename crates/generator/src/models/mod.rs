@@ -28,7 +28,7 @@ pub struct RequiredField<'a> {
     pub inner: FieldWalker<'a>,
 }
 
-pub fn required_fields<'a>(model: ModelWalker<'a>) -> Option<Vec<RequiredField<'a>>> {
+pub fn required_fields(model: ModelWalker<'_>) -> Option<Vec<RequiredField<'_>>> {
     model
         .fields()
         .filter(|field| match field.refine() {
@@ -93,14 +93,14 @@ pub fn modules(args: &GenerateArgs, module_path: &TokenStream) -> Vec<Module> {
                 order_by::model_data(model, args),
                 with_params::model_data(model),
                 set_params::model_data(model, args),
-                select::model_data(model, &module_path),
-                include::model_data(model, &module_path),
+                select::model_data(model, module_path),
+                include::model_data(model, module_path),
             ]);
 
             let create_types = create::types(model);
             let types_struct = types::r#struct(model, module_path);
             let data_struct = data::r#struct(model);
-            let partial_unchecked_macro = partial_unchecked::r#macro(model, &module_path);
+            let partial_unchecked_macro = partial_unchecked::r#macro(model, module_path);
             let filter_macro = filter::r#macro(model, module_path);
 
             let mongo_raw_types = cfg!(feature = "mongodb").then(|| quote! {
@@ -168,7 +168,7 @@ impl ModelModulePart {
             .into_iter()
             .flat_map(|p| p.into_iter())
             .fold(BTreeMap::new(), |mut acc, (k, v)| {
-                let entry = acc.entry(k).or_insert_with(|| vec![]);
+                let entry: &mut Vec<TokenStream> = acc.entry(k).or_default();
                 entry.push(v);
                 acc
             })

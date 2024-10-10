@@ -44,11 +44,11 @@ pub trait FieldExt<'a> {
 impl<'a> FieldExt<'a> for FieldWalker<'a> {
     fn type_tokens(self, prefix: &TokenStream) -> Option<TokenStream> {
         match self.refine() {
-            RefinedFieldWalker::Scalar(scalar_field) => scalar_field.scalar_field_type().to_tokens(
-                prefix,
-                &self.ast_field().arity,
-                &self.db,
-            ),
+            RefinedFieldWalker::Scalar(scalar_field) => {
+                scalar_field
+                    .scalar_field_type()
+                    .to_tokens(prefix, &self.ast_field().arity, self.db)
+            }
             RefinedFieldWalker::Relation(relation_field) => {
                 let related_model_name_snake = snake_ident(relation_field.related_model().name());
 
@@ -87,7 +87,7 @@ impl<'a> FieldExt<'a> for FieldWalker<'a> {
 
 impl<'a> FieldExt<'a> for CompositeTypeFieldWalker<'a> {
     fn type_tokens(self, prefix: &TokenStream) -> Option<TokenStream> {
-        self.r#type().to_tokens(prefix, &self.arity(), &self.db)
+        self.r#type().to_tokens(prefix, &self.arity(), self.db)
     }
 
     fn type_prisma_value(self, var: &Ident) -> Option<TokenStream> {
@@ -207,13 +207,13 @@ impl ScalarFieldTypeExt for ScalarFieldType {
         let pv = quote!(::prisma_client_rust::PrismaValue);
 
         let scalar_converter = match self {
-            Self::BuiltInScalar(typ) => typ.to_prisma_value(&var),
+            Self::BuiltInScalar(typ) => typ.to_prisma_value(var),
             Self::Enum(_) => quote!(#pv::Enum(#var.to_string())),
             Self::Unsupported(_) => return None,
             Self::CompositeType(_) => quote!(#pv::Object(vec![])),
         };
 
-        Some(arity.wrap_pv(&var, scalar_converter))
+        Some(arity.wrap_pv(var, scalar_converter))
     }
 }
 

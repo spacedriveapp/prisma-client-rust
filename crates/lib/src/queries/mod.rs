@@ -56,12 +56,12 @@ pub enum SerializedWhereValue {
     Value(PrismaValue),
 }
 
-impl Into<PrismaValue> for SerializedWhereValue {
-    fn into(self) -> PrismaValue {
-        match self {
-            Self::Object(v) => PrismaValue::Object(v),
-            Self::List(v) => PrismaValue::List(v),
-            Self::Value(v) => v,
+impl From<SerializedWhereValue> for PrismaValue {
+    fn from(val: SerializedWhereValue) -> Self {
+        match val {
+            SerializedWhereValue::Object(v) => PrismaValue::Object(v),
+            SerializedWhereValue::List(v) => PrismaValue::List(v),
+            SerializedWhereValue::Value(v) => v,
         }
     }
 }
@@ -73,10 +73,7 @@ pub struct SerializedWhereInput {
 
 impl SerializedWhereInput {
     pub fn new(field: String, value: SerializedWhereValue) -> Self {
-        Self {
-            field,
-            value: value.into(),
-        }
+        Self { field, value }
     }
 
     /// If the parameter is an 'equals' parameter, collapses the value provided directly
@@ -103,9 +100,9 @@ impl SerializedWhereInput {
     }
 }
 
-impl Into<(String, PrismaValue)> for SerializedWhereInput {
-    fn into(self) -> (String, PrismaValue) {
-        let SerializedWhereInput { field, value } = self;
+impl From<SerializedWhereInput> for (String, PrismaValue) {
+    fn from(val: SerializedWhereInput) -> Self {
+        let SerializedWhereInput { field, value } = val;
         (field, value.into())
     }
 }

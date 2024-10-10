@@ -15,7 +15,7 @@ pub fn generate_module(args: &GenerateArgs) -> TokenStream {
                     n => n,
                 };
 
-                let variant_name = pascal_ident(&action_sanitised_str);
+                let variant_name = pascal_ident(action_sanitised_str);
 
                 let value_ident = format_ident!("value");
 

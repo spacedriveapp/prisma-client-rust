@@ -99,8 +99,8 @@ impl<'a, Actions: ModelTypes> FindFirst<'a, Actions> {
                         ),
                     )
                 }),
-                skip.map(|skip| ("skip".to_string(), PrismaValue::Int(skip as i32).into())),
-                take.map(|take| ("take".to_string(), PrismaValue::Int(take as i32).into())),
+                skip.map(|skip| ("skip".to_string(), PrismaValue::Int(skip as i32))),
+                take.map(|take| ("take".to_string(), PrismaValue::Int(take as i32))),
             ]
             .into_iter()
             .flatten(),

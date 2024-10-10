@@ -1,6 +1,5 @@
 use prisma_models::{walkers::ScalarFieldWalker, FieldArity};
 use psl::{
-    builtin_connectors,
     datamodel_connector::Connector,
     parser_database::{ScalarFieldType, ScalarType},
     ValidatedSchema,
@@ -56,7 +55,7 @@ impl<'a> GenerateArgs<'a> {
                 ];
 
                 filters.extend(possible_filters.iter().filter_map(|filter| {
-                    let filter_type = dmmf.schema.find_input_type(&filter)?;
+                    let filter_type = dmmf.schema.find_input_type(filter)?;
 
                     let mut s = scalar.as_str().to_string();
 
@@ -82,7 +81,7 @@ impl<'a> GenerateArgs<'a> {
                 ];
 
                 filters.extend(possible_filters.iter().filter_map(|filter| {
-                    let filter_type = dmmf.schema.find_input_type(&filter)?;
+                    let filter_type = dmmf.schema.find_input_type(filter)?;
 
                     let mut name = enm.ast_enum().name.name.clone();
 
@@ -275,10 +274,9 @@ impl<'a> GenerateArgs<'a> {
             filters
         };
 
-        use builtin_connectors::*;
         let connector = match &engine_dmmf.datasources[0].provider {
             #[cfg(feature = "sqlite")]
-            p if SQLITE.is_provider(p) => SQLITE,
+            p if psl::builtin_connectors::SQLITE.is_provider(p) => psl::builtin_connectors::SQLITE,
             #[cfg(feature = "postgresql")]
             p if POSTGRES.is_provider(p) => POSTGRES,
             #[cfg(feature = "postgresql")]
@@ -365,7 +363,7 @@ impl DmmfInputFieldExt for DmmfInputField {
             .input_types
             .iter()
             .find(|typ| !matches!(typ.location, TypeLocation::Scalar if typ.typ == "Null"))
-            .expect(&format!("No type found for field {}", self.name));
+            .unwrap_or_else(|| panic!("No type found for field {}", self.name));
 
         if input_type.is_list {
             FieldArity::List
@@ -381,7 +379,7 @@ impl DmmfInputFieldExt for DmmfInputField {
             .input_types
             .iter()
             .find(|typ| !matches!(typ.location, TypeLocation::Scalar if typ.typ == "Null"))
-            .expect(&format!("No type found for field {}", self.name));
+            .unwrap_or_else(|| panic!("No type found for field {}", self.name));
 
         let arity = self.arity();
 
@@ -410,7 +408,7 @@ impl DmmfInputFieldExt for DmmfInputField {
             .input_types
             .iter()
             .find(|typ| !matches!(typ.location, TypeLocation::Scalar if typ.typ == "Null"))
-            .expect(&format!("No type found for field {}", self.name));
+            .unwrap_or_else(|| panic!("No type found for field {}", self.name));
 
         let arity = self.arity();
 

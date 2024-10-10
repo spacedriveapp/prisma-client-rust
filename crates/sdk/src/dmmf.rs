@@ -45,9 +45,10 @@ impl EnvValue {
             .and_then(|o| match o.as_str() {
                 // dmmf is cringe apparently?
                 "null" => None,
-                env_var => {
-                    Some(std::env::var(env_var).expect(&format!("env var {env_var} not found")))
-                }
+                env_var => Some(
+                    std::env::var(env_var)
+                        .unwrap_or_else(|_| panic!("env var {env_var} not found")),
+                ),
             })
             .unwrap_or_else(|| self.value.clone().expect("value not found"))
     }

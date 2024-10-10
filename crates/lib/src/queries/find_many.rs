@@ -73,8 +73,7 @@ impl<'a, Actions: ModelTypes> FindMany<'a, Actions> {
                                 .map(WhereInput::serialize)
                                 .map(|s| (s.field, s.value.into()))
                                 .collect(),
-                        ))
-                        .into(),
+                        )),
                     )
                 }),
                 (!order_by_params.is_empty()).then(|| {
@@ -85,8 +84,7 @@ impl<'a, Actions: ModelTypes> FindMany<'a, Actions> {
                                 .into_iter()
                                 .map(|p| PrismaValue::Object(vec![p.into()]))
                                 .collect(),
-                        )
-                        .into(),
+                        ),
                     )
                 }),
                 (!cursor_params.is_empty()).then(|| {
@@ -98,12 +96,11 @@ impl<'a, Actions: ModelTypes> FindMany<'a, Actions> {
                                 .map(WhereInput::serialize)
                                 .map(|s| (s.field, s.value.into()))
                                 .collect(),
-                        )
-                        .into(),
+                        ),
                     )
                 }),
-                skip.map(|skip| ("skip".to_string(), PrismaValue::Int(skip as i32).into())),
-                take.map(|take| ("take".to_string(), PrismaValue::Int(take as i32).into())),
+                skip.map(|skip| ("skip".to_string(), PrismaValue::Int(skip as i32))),
+                take.map(|take| ("take".to_string(), PrismaValue::Int(take as i32))),
             ]
             .into_iter()
             .flatten(),
@@ -275,8 +272,7 @@ impl<Actions: ModelTypes> ManyArgs<Actions> {
                             .map(WhereInput::serialize)
                             .map(Into::into)
                             .collect(),
-                    )
-                    .into(),
+                    ),
                 )
             }),
             (!self.order_by_params.is_empty()).then(|| {
@@ -287,8 +283,7 @@ impl<Actions: ModelTypes> ManyArgs<Actions> {
                             .into_iter()
                             .map(|p| PrismaValue::Object(vec![p.into()]))
                             .collect(),
-                    )
-                    .into(),
+                    ),
                 )
             }),
             (!self.cursor_params.is_empty()).then(|| {
@@ -313,7 +308,7 @@ impl<Actions: ModelTypes> ManyArgs<Actions> {
         .map(|(k, v)| (k, prisma_models::PrismaValue::from(v).into()))
         .collect();
 
-        let nested_selections = (self.with_params.len() > 0)
+        let nested_selections = (!self.with_params.is_empty())
             .then(|| self.with_params.into_iter().map(Into::into).collect())
             .unwrap_or_default();
 

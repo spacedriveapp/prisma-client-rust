@@ -1,37 +1,29 @@
 [workspace]
-members = [
-  "examples/*",
-  "examples/tauri/src-tauri",
-  "integration-tests",
-  "tests/*/*",
-  "crates/*",
-  "crates/sdk/example/*",
-  "prisma-cli",
-]
-exclude = ["examples/tauri"]
+exclude  = ["crates/cli", "crates/sdk/example"]
+members  = ["crates/*"]
 resolver = "2"
 
 [workspace.dependencies]
 prisma-client-rust = { path = "crates/lib" }
 
-diagnostics = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-dmmf = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-prisma-models = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-psl = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-query-core = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-schema-core = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-request-handlers = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-user-facing-errors = { git = "https://github.com/Brendonovich/prisma-engines", branch = "5.1.0-patched" }
-
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
+dmmf               = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "608c836952" }
+prisma-models      = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "608c836952" }
+psl                = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "608c836952" }
+query-core         = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "608c836952" }
+request-handlers   = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "608c836952" }
+schema-core        = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "608c836952" }
+user-facing-errors = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "608c836952" }
 
 convert_case = "0.6.0"
-
-tauri-specta = { version = "2.0.0-rc.9" }
-
-# This is a deprecated feature so we don't really care about the verison
-rspc = "*"
-
+proc-macro2  = "1.0"
+quote        = "1.0"
+serde        = { version = "1.0", features = ["derive"] }
+serde_json   = "1.0"
+syn          = "2.0"
 # We don't lock version cause PCR only depends on `derive(Type)` so it should be fine.
-specta = "^2.0.0-rc"
+specta    = "^2.0.0-rc"
+thiserror = "1.0"
+
+[workspace.dependencies.rspc]
+git = "https://github.com/spacedriveapp/rspc.git"
+rev = "68349c19e1"
