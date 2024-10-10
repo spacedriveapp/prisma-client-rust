@@ -187,7 +187,7 @@ pub fn model_data(model: ModelWalker, args: &GenerateArgs) -> ModelModulePart {
                     .iter()
                     .find_map(|(typ, _)| (typ.to_string() == data[0].0.to_string()).then_some(typ))
                 else {
-                    panic!();
+                    panic!("No type found for field {}", name);
                 };
 
                 let impls = data.iter().map(|(_, impls)| impls);

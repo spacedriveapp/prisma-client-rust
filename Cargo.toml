@@ -6,13 +6,13 @@ resolver = "2"
 [workspace.dependencies]
 prisma-client-rust = { path = "crates/lib" }
 
-dmmf               = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "d50d8d7a67" }
-prisma-models      = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "d50d8d7a67" }
-psl                = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "d50d8d7a67" }
-query-core         = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "d50d8d7a67" }
-request-handlers   = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "d50d8d7a67" }
-schema-core        = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "d50d8d7a67" }
-user-facing-errors = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "d50d8d7a67" }
+dmmf               = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "93a72cdc2a" }
+prisma-models      = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "93a72cdc2a" }
+psl                = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "93a72cdc2a" }
+query-core         = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "93a72cdc2a" }
+request-handlers   = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "93a72cdc2a" }
+schema-core        = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "93a72cdc2a" }
+user-facing-errors = { git = "https://github.com/spacedriveapp/prisma-engines.git", rev = "93a72cdc2a" }
 
 convert_case = "0.6.0"
 proc-macro2  = "1.0"
