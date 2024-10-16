@@ -26,4 +26,4 @@ thiserror = "1.0"
 
 [workspace.dependencies.rspc]
 git = "https://github.com/spacedriveapp/rspc.git"
-rev = "68349c19e1"
+rev = "6a77167495"
