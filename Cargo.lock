@@ -295,7 +295,7 @@ dependencies = [
 [[package]]
 name = "builtin-psl-connectors"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "connection-string",
  "either",
@@ -588,7 +588,7 @@ dependencies = [
 [[package]]
 name = "datamodel-renderer"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "base64 0.22.1",
  "once_cell",
@@ -608,7 +608,7 @@ dependencies = [
 [[package]]
 name = "diagnostics"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "colored",
  "indoc",
@@ -650,7 +650,7 @@ dependencies = [
 [[package]]
 name = "dmmf"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "bigdecimal 0.4.5",
  "indexmap 2.6.0",
@@ -1227,7 +1227,7 @@ dependencies = [
 [[package]]
 name = "json-rpc-api-build"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "backtrace",
  "heck",
@@ -1936,7 +1936,7 @@ dependencies = [
 [[package]]
 name = "parser-database"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "diagnostics",
  "either",
@@ -2253,7 +2253,7 @@ dependencies = [
 [[package]]
 name = "prisma-models"
 version = "0.0.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "bigdecimal 0.4.5",
  "chrono",
@@ -2269,7 +2269,7 @@ dependencies = [
 [[package]]
 name = "prisma-value"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "base64 0.22.1",
  "bigdecimal 0.4.5",
@@ -2325,7 +2325,7 @@ dependencies = [
 [[package]]
 name = "psl"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "builtin-psl-connectors",
  "psl-core",
@@ -2334,7 +2334,7 @@ dependencies = [
 [[package]]
 name = "psl-core"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "bigdecimal 0.4.5",
  "chrono",
@@ -2376,7 +2376,7 @@ dependencies = [
 [[package]]
 name = "quaint"
 version = "0.2.0-alpha.13"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
@@ -2414,7 +2414,7 @@ dependencies = [
 [[package]]
 name = "query-connector"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2434,7 +2434,7 @@ dependencies = [
 [[package]]
 name = "query-core"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "async-trait",
  "bigdecimal 0.4.5",
@@ -2608,7 +2608,7 @@ dependencies = [
 [[package]]
 name = "request-handlers"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "bigdecimal 0.4.5",
  "connection-string",
@@ -2766,7 +2766,7 @@ dependencies = [
 [[package]]
 name = "schema"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "once_cell",
  "prisma-models",
@@ -2777,7 +2777,7 @@ dependencies = [
 [[package]]
 name = "schema-ast"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "diagnostics",
  "pest",
@@ -2787,7 +2787,7 @@ dependencies = [
 [[package]]
 name = "schema-connector"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "chrono",
  "enumflags2",
@@ -2804,7 +2804,7 @@ dependencies = [
 [[package]]
 name = "schema-core"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "async-trait",
  "chrono",
@@ -3090,12 +3090,12 @@ dependencies = [
 [[package]]
 name = "sql-ddl"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 
 [[package]]
 name = "sql-query-connector"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -3124,7 +3124,7 @@ dependencies = [
 [[package]]
 name = "sql-schema-connector"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "chrono",
  "connection-string",
@@ -3155,7 +3155,7 @@ dependencies = [
 [[package]]
 name = "sql-schema-describer"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "async-trait",
  "bigdecimal 0.4.5",
@@ -3176,13 +3176,11 @@ dependencies = [
 
 [[package]]
 name = "sqlformat"
-version = "0.3.0"
+version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4565f2e36a05369efe8bf4f7fe0b531710c66dd1b339b50eb83f02ec1863a9c1"
+checksum = "7bba3a93db0cc4f7bdece8bb09e77e2e785c20bfebf79eb8340ed80708048790"
 dependencies = [
  "nom",
- "once_cell",
- "regex",
  "unicode_categories",
 ]
 
@@ -3679,7 +3677,7 @@ dependencies = [
 [[package]]
 name = "user-facing-error-macros"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -3689,7 +3687,7 @@ dependencies = [
 [[package]]
 name = "user-facing-errors"
 version = "0.1.0"
-source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=a2614f5363#a2614f5363503df8b1164a56732981012f474084"
+source = "git+https://github.com/spacedriveapp/prisma-engines.git?rev=9a8a66a446#9a8a66a446460ca48f885ccd5d0c5ac8a592b81d"
 dependencies = [
  "backtrace",
  "indoc",
